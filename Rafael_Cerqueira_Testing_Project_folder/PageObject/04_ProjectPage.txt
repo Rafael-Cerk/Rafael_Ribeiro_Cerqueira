@@ -1,0 +1,99 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+
+
+Documentation	
+
+# TODO: Write Precondition, Postcondition, Tags
+
+Pre Condition	 Open GitLab Project Creation Page 
+Post Condition	 Close Browser
+Tags create_project
+
+#******************* Common Variables ********************
+
+*** Variables ***
+
+createproject = https://gitlab.com/projects/new
+
+name_of_group = group_1
+name_of_project = project_1
+name_of_project_2 = project_2
+template_name = .NET Core
+
+project = https://gitlab.com/r7442849/new-blank-project
+project_update_name = update_name
+
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+
+
+	Create blank project:
+Navigate To Create Project Page  createproject
+Input name_of_group  group_1
+Input name_of_project  project_1
+Optionally Tick the  Getting Started README
+Click Button  Create project
+Verify that the project was created
+
+
+	Create template project: 
+Navigate To Project Page  ProjectUrl
+click create from template
+select template template name
+input name_of_group  group_1
+input name_of_project_2 project_2
+
+
+	Update name of template project:
+Navigate To Project Page  project
+Click on the three dots on the right side of the screen
+Click on project settings
+Input project_update_name  update_name
+Click Button  Save Changes
+ Verify that the project name was updated
+
+
+	Delete template project:
+Navigate To Project Page  project
+Click on the three dots on the right side of the screen
+Click on project settings
+Click Button  Advanced
+Click Button  Delete project
+Input Delete_Confirmation 
+verify that the project was deleted
+
+
+	Valide that message is showing Project 'First project ' was successfully created:
+Navigate To Create Project Page  createproject
+Click Button Create blank report
+Input name_of_project  First project
+Click Button  Create project
+verify if project was created
+
+
+
+# Negative Test examples are below write test process steps for each below test case
+
+
+	Create a blank project with the previous same name:
+Navigate To Create Project Page  createproject
+Click Button Create blank report
+Input name_of_project  First project
+Click Button  Create project
+error message apears indicating that name has already been used
+
+
+
+
+
+
+
+
+

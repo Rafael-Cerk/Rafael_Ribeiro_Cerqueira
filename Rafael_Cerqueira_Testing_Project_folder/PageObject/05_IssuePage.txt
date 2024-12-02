@@ -1,0 +1,84 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+Documentation	Issue Test scenario. CRUD Operation: Create, Read, Update, Delete
+
+# TODO: Write Precondition and Postcondition, Tags 
+
+Pre Condition open Gitlab issues page. Tips: Project must be created by the user before 
+Post Condition	Close browsers
+Tags issue
+
+#******************* Common Variables ********************
+
+
+*** Variables ***
+
+projectpage = https://gitlab.com/r7442849/new-blank-project
+
+title_of_issue = issue_1
+
+new_title = issue_11
+
+issue_projectpage = https://gitlab.com/r7442849/new-blank-project/-/issues
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# TODO: Write Positive Test Cases and Test Process steps
+
+# Positive Test examples are below write test process steps for each below test case
+
+	Create issue:
+Navigate To Project Page projectpage
+Navigate to the the left sidebar
+Click Button  Plan
+Click Button  Issues
+Click Button  New Issue
+Input Title title_of_issue
+Click Button  Create issue
+Verify that the issue was created
+
+
+
+ 	Update name of issue:
+ Navigate To Issue Page  issue_projectpage
+Click Button  title_of_issue
+Click Button  Edit
+Input Title  new_title
+Click Button  Save changes
+Verify that the issue was updated
+
+
+ 
+	Create second issue with privious updated name:
+Navigate To Project Page  projectpage   	
+Navigate to the the left sidebar
+Click Button  Plan
+Click Button  Issues
+Click Button  New Issue
+Input Title   title_of_issue
+Click Button  Create issue
+Verify that the second issue was created
+
+
+
+	Delete first issue:
+Navigate To Project Page  projectpage   	
+Click Button new_title
+Click Button  Three dots on the right side of the screen
+Click Button  Delete issue
+verify that issue was deleted
+
+
+
+
+
+
+
+
+
+
